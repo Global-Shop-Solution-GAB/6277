@@ -1,0 +1,1047 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..create
+Gui.Form..caption("Check Export for BB&T")
+Gui.Form..size(13470,11145)
+Gui.Form..position(0,0)
+Gui.Form..event(UnLoad,Form_UnLoad)
+Gui.Form..forecolor(0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..mousepointer(0)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form.dpStart.create(datepicker)
+Gui.Form.dpStart.size(1935,285)
+Gui.Form.dpStart.position(75,420)
+Gui.Form.dpStart.defaultvalue("")
+Gui.Form.cmdGetData.create(button)
+Gui.Form.cmdGetData.caption("Get Data")
+Gui.Form.cmdGetData.size(1095,375)
+Gui.Form.cmdGetData.position(4170,375)
+Gui.Form.cmdGetData.event(Click,cmdGetData_Click)
+Gui.Form.cmdGetData.defaultvalue("")
+Gui.Form.cmdGetData.BackColor(9157775)
+Gui.Form.cmdGetData.ForeColor(16777215)
+Gui.Form.cmdGetData.FontStyle(True,False,False,False,False)
+Gui.Form.lbl1.Create(Label,"Start Date",True,1035,255,0,60,210,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtExportFolder.Create(TextBox,"",True,5580,300,0,75,10080,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtExportFolder.Anchor(6)
+Gui.Form.lbl2.Create(Label,"Export Folder",True,1215,255,0,60,9870,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl2.Anchor(6)
+Gui.Form.cmdBrowseExportFolder.Create(Button)
+Gui.Form.cmdBrowseExportFolder.Size(570,375)
+Gui.Form.cmdBrowseExportFolder.Position(5715,10050)
+Gui.Form.cmdBrowseExportFolder.Caption("^")
+Gui.Form.cmdBrowseExportFolder.Event(Click,cmdBrowseExportFolder_Click)
+Gui.Form.cmdBrowseExportFolder.Anchor(6)
+Gui.Form.txtBankAccount.Create(TextBox,"",False,1830,300,0,11715,45,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtBankAccount.DefaultValue("")
+Gui.Form.txtBankAccount.MaxLength(17)
+Gui.Form.lbl4.Create(Label,"Bank Account",False,1275,255,0,10365,165,True,0,"Arial",8,-2147483633,0)
+Gui.Form.gsCustom.Create(GsGridControl)
+Gui.Form.gsCustom.Size(13185,8670)
+Gui.Form.gsCustom.Position(75,1050)
+Gui.Form.gsCustom.Anchor(15)
+Gui.Form.gsCustom.Event(RowCellClick,gsCustom_RowCellClick)
+Gui.Form.cmdExport.Create(Button)
+Gui.Form.cmdExport.Enabled(False)
+Gui.Form.cmdExport.Size(855,375)
+Gui.Form.cmdExport.Position(6360,10050)
+Gui.Form.cmdExport.Caption("Export")
+Gui.Form.cmdExport.DefaultValue("")
+Gui.Form.cmdExport.Event(Click,cmdExport_Click)
+Gui.Form.cmdExport.Anchor(6)
+Gui.Form.lbl3.Create(Label,"End Date",True,1035,255,0,2190,210,True,0,"Arial",8,-2147483633,0)
+Gui.Form.dpEnd.Create(DatePicker)
+Gui.Form.dpEnd.Size(1935,285)
+Gui.Form.dpEnd.Position(2130,420)
+Gui.Form.dpEnd.DefaultValue("")
+Gui.Form.proBar1.Create(ProgressBar)
+Gui.Form.proBar1.Visible(False)
+Gui.Form.proBar1.Size(13200,120)
+Gui.Form.proBar1.Position(60,810)
+Gui.Form.proBar1.Anchor(13)
+Gui.Form.cmdExpandAll.Create(Button)
+Gui.Form.cmdExpandAll.Size(1215,375)
+Gui.Form.cmdExpandAll.Position(5340,375)
+Gui.Form.cmdExpandAll.Caption("Expand All")
+Gui.Form.cmdExpandAll.Event(Click,cmdExpandAll_Click)
+Gui.Form.cmdExpandAll.BackColor(15136253)
+Gui.Form.cmdCollapseAll.Create(Button)
+Gui.Form.cmdCollapseAll.Size(1215,375)
+Gui.Form.cmdCollapseAll.Position(6630,375)
+Gui.Form.cmdCollapseAll.Caption("Collapse All")
+Gui.Form.cmdCollapseAll.Event(Click,cmdCollapseAll_Click)
+Gui.Form.cmdCollapseAll.BackColor(11788021)
+Gui.Form.ddlType.Create(DropDownList)
+Gui.Form.ddlType.Size(1095,330)
+Gui.Form.ddlType.Position(4155,405)
+Gui.Form.ddlType.Visible(False)
+Gui.Form.cmdSelectAll.Create(Button)
+Gui.Form.cmdSelectAll.Size(1215,375)
+Gui.Form.cmdSelectAll.Position(7935,375)
+Gui.Form.cmdSelectAll.Caption("Select All")
+Gui.Form.cmdSelectAll.Event(Click,cmdSelectAll_Click)
+Gui.Form.cmdSelectAll.BackColor(-2147483621)
+Gui.Form.cmdDeselectAll.Create(Button)
+Gui.Form.cmdDeselectAll.Size(1215,375)
+Gui.Form.cmdDeselectAll.Position(9240,375)
+Gui.Form.cmdDeselectAll.Caption("Deselect All")
+Gui.Form.cmdDeselectAll.Event(Click,cmdDeselectAll_Click)
+Gui.Form.cmdDeselectAll.BackColor(-2147483620)
+Gui.Form.cmdSettings.Create(Button)
+Gui.Form.cmdSettings.Size(855,375)
+Gui.Form.cmdSettings.Position(10575,375)
+Gui.Form.cmdSettings.Caption("Settings")
+Gui.Form.cmdSettings.Event(Click,cmdSettings_Click)
+Gui.Settings..Create
+Gui.Settings..Caption("Settings")
+Gui.Settings..Size(9705,8340)
+Gui.Settings..MinX(0)
+Gui.Settings..MinY(0)
+Gui.Settings..Position(0,0)
+Gui.Settings..BackColor(-2147483633)
+Gui.Settings..MousePointer(0)
+Gui.Settings..Event(UnLoad,Settings_UnLoad)
+Gui.Settings.txtCompanyCode.Create(TextBox,"",True,1215,300,0,255,555,True,0,"Arial",8,-2147483643,1)
+Gui.Settings.txtCompanyCode.MaxLength(3)
+Gui.Settings.lblCompanyCode.Create(Label,"Company Code",True,1425,255,0,255,345,True,0,"Arial",8,-2147483633,0)
+Gui.Settings.txtRouter.Create(TextBox,"",True,1215,300,0,1620,555,True,0,"Arial",8,-2147483643,1)
+Gui.Settings.txtRouter.MaxLength(50)
+Gui.Settings.txtBankAccount.Create(TextBox,"",True,2295,300,0,2970,555,True,0,"Arial",8,-2147483643,1)
+Gui.Settings.txtBankAccount.MaxLength(50)
+Gui.Settings.lbl1.Create(Label,"Router",True,1215,255,0,1635,345,True,0,"Arial",8,-2147483633,0)
+Gui.Settings.lbl2.Create(Label,"Bank Account",True,2280,255,0,2955,345,True,0,"Arial",8,-2147483633,0)
+Gui.Settings.cmdAddBankAccount.Create(Button)
+Gui.Settings.cmdAddBankAccount.Size(855,375)
+Gui.Settings.cmdAddBankAccount.Position(5415,525)
+Gui.Settings.cmdAddBankAccount.Caption("Add")
+Gui.Settings.cmdAddBankAccount.Event(Click,cmdAddBankAccount_Click)
+Gui.Settings.gsBankAccounts.Create(GsGridControl)
+Gui.Settings.gsBankAccounts.Size(8940,6420)
+Gui.Settings.gsBankAccounts.Position(285,1095)
+Gui.Settings.gsBankAccounts.Event(RowCellClick,gsBankAccounts_RowCellClick)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+v.Global.sCompanyName.Declare
+v.Global.sAddress1.Declare
+v.Global.sAddress2.Declare
+v.Global.sCity.Declare
+v.Global.sState.Declare
+v.Global.sZip.Declare
+v.Global.sCountry.Declare
+v.Global.sRoutingNumber.Declare
+v.Global.sAccountNumber.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'BN, Feb 11, 2020
+'Customer: ELECTRO-MECHANICAL CORPORATION
+'This project will generate a csv pay for BB&T
+
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sDefaultfolder.Declare
+	v.Local.bExist.Declare
+	v.Local.sRet.Declare
+	v.Local.iCnt.Declare
+	v.Local.sRouter.Declare
+	v.Local.sAccount.Declare
+
+	F.Odbc.Connection!Conx.OpenCompanyConnection
+	f.Intrinsic.Control.CallSub(Create_Country_Codes)
+		
+	'F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"GSSMENU.EXE",2000,2,1,"",v.Local.sRet)
+	F.Intrinsic.Task.SetEnvironmentVariable("USEDARKTHEME",False)
+	gui.Form..applytheme()
+	
+	'Create custom folder
+	f.Intrinsic.String.Build("{0}\Custom\6277",v.Caller.GlobalDir,v.Local.sDefaultfolder)
+	f.Intrinsic.File.DirExists(v.Local.sDefaultfolder,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDefaultfolder)
+	f.Intrinsic.Control.EndIf	
+	
+	'Default Pay folder that store the csv output file.
+	f.Intrinsic.String.Build("{0}\Custom\6277\{1}",v.Caller.GlobalDir,v.Caller.CompanyCode,v.Local.sDefaultfolder)
+	f.Intrinsic.File.DirExists(v.Local.sDefaultfolder,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDefaultfolder)
+	f.Intrinsic.Control.EndIf	
+	gui.Form.txtExportFolder.Text(v.Local.sDefaultfolder)	
+
+	f.ODBC.Connection!conC.OpenCommonConnection
+	Function.ODBC.Connection!conC.TableExists("GCG_6277_Bks",v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.ODBC.Connection!conC.Execute("CREATE TABLE GCG_6277_Bks ( Company CHAR(3), Router Varchar(50), Account Varchar(50),InUse Bit DEFAULT '0' NOT NULL)")
+	f.Intrinsic.Control.Endif	
+	f.ODBC.Connection!conC.Close
+
+	f.Intrinsic.Control.CallSub(GetAccount)
+	
+	gui.Form.ddlType.AddItem("CHK")
+	'gui.Form.ddlType.AddItem("ACH")
+	
+	gui.Form.ddlType.ListIndex(0)
+	
+	gui.Form..Visible(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.CallSub("Unload")
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.UnLoad.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.ODBC.conx.State,=,1)
+		F.ODBC.Connection!conx.close
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.UnLoad.End
+
+Program.Sub.cmdBrowseExportFolder_Click.Start
+'Browse Export Folder
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sPath.Declare
+	
+	F.Intrinsic.UI.FolderBrowser("Select Folder for Path",V.Local.sPath)
+	f.Intrinsic.Control.If(v.Local.sPath.IsCancel,=,False)
+		gui.Form.txtExportFolder.Text(v.Local.sPath)
+	f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseExportFolder_Click.End
+
+Program.Sub.cmdGetData_Click.Start
+'Verify if there are checks for the selected date. If yes, show the grid for the user to overwrite the courrier code
+f.Intrinsic.Control.Try	
+	V.Local.sError.Declare
+	v.Local.sSQL.Declare
+	v.Local.bExist.Declare
+	V.Local.sStartDate.Declare
+	v.Local.sEndDate.Declare
+	v.Local.iCnt.Declare
+	v.Local.sHold.Declare	
+	v.Local.iInner.Declare
+	v.Local.sRet.Declare
+	v.Local.fDetailTotal.Declare
+		
+	'format date
+	F.Intrinsic.String.Format(V.Screen.Form!dpStart.Value,"YYYY-MM-DD",V.Local.sStartDate)
+	F.Intrinsic.String.Format(V.Screen.Form!dpEnd.Value,"YYYY-MM-DD",V.Local.sEndDate)
+	
+	'select data 
+	F.intrinsic.string.Build("Select CK_DATE, CK_NO, CK_OR_VOID, ACCT_NO,vend_no, Payee,AMOUNT from V_CHECKS_LOG where CK_NO not like 'ET%' and CK_no not like 'A%' and CK_OR_VOID <> 'V' and CK_DATE between '{0}' and '{1}' order by CK_DATE",v.Local.sStartDate,v.Local.sEndDate,V.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.PreT.Exists)
+		f.Data.DataTable.Close("PreT")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.CreateFromSQL("PreT","conx",v.Local.sSQL,True)	
+	f.Intrinsic.Control.If(v.DataTable.PreT.RowCount,=,0)
+		f.Intrinsic.UI.Msgbox("No checks to export")	
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf		
+
+	f.Data.DataTable.AddColumn("PreT","SelectRow","Boolean",False)
+	f.Data.DataTable.AddColumn("PreT","Error","String","")
+	
+	'BN Mar 23 2022
+	f.Data.DataTable.AddColumn("PreT","DetailTotal","Float",0)
+	
+
+	f.Data.DataView.Create("PreT","PreTDV")
+	'Add grid view
+	
+	Gui.Form.gsCustom.AddGridviewFromDataview("GVMain","PreT","PreTDV")	
+
+	'****'Child table'
+	'Add sub table
+	F.Data.Datatable.AddTable("PreT","AP")
+	f.Data.DataTable.AddColumn("PreT$AP","Check_Num","String")
+	f.Data.DataTable.AddColumn("PreT$AP","Invoice","String")
+	f.Data.DataTable.AddColumn("PreT$AP","Batch_Num","String")
+	f.Data.DataTable.AddColumn("PreT$AP","Batch_Line","String")
+	f.Data.DataTable.AddColumn("PreT$AP","Date_Batch","Date")
+	f.Data.DataTable.AddColumn("PreT$AP","Date_Invoice","Date")
+	f.Data.DataTable.AddColumn("PreT$AP","Amt_Invoice","float")
+	f.Data.DataTable.AddColumn("PreT$AP","Amt_Transaction","float")
+	f.Data.DataTable.AddColumn("PreT$AP","Discount_Invoice","float")
+	'BN Mar 23 2022
+	f.Data.DataTable.AddColumn("PreT$AP","Ignore","Boolean",False)
+	
+	'AT Mar 22 2022
+	f.Data.DataTable.AddExpressionColumn("PreT$AP","Amt_Net","float","[Amt_Transaction] - [Discount_Invoice]")
+	f.Data.DataTable.AddColumn("PreT$AP","Purchase_Order","String")	
+	
+	'Create Child Dataview	
+	F.Data.DataView.Create("PreT$AP","APdv")	
+	F.Data.DataTable.AddRelation("PreT","Ck_No","PreT$AP","Check_Num","Invoice Details")
+	Gui.Form.gsCustom.AddGridviewFromDataview("gvAP","PreT","APdv")	
+	
+	'Custom date
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Date_Batch","DisplayCustomDatetime","d")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Date_Invoice","DisplayCustomDatetime","d")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Invoice","DisplayCustomNumeric","###,###,###,##0.00")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Transaction","DisplayCustomNumeric","###,###,###,##0.00")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Discount_Invoice","DisplayCustomNumeric","###,###,###,##0.00")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Net","DisplayCustomNumeric","###,###,###,##0.00")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Invoice","HeaderHAlignment","far")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Transaction","HeaderHAlignment","far")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Discount_Invoice","HeaderHAlignment","far")
+	Gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Net","HeaderHAlignment","far")
+	'Invisible
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Check_Num","Visible",False)
+	'Caption
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Batch_Num","Caption","Batch")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Batch_Line","Caption","Line")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Date_Batch","Caption","Batch Date")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Date_Invoice","Caption","Invoice Date")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Invoice","Caption","Amt Invoice")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Transaction","Caption","Amt Transaction")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Discount_Invoice","Caption","Discount Invoice")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Amt_Net","Caption","Amt Net")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Purchase_Order","Caption","Purchase Order")
+	'Width
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Batch_Num","Width","35")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Batch_Line","Width","35")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Date_Batch","Width","75")
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Date_Invoice","Width","75")
+	
+	'Invisible
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Purchase_Order","Visible",False)
+	
+	'BN Mar 23 2022
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Ignore","AllowEdit",False)
+	gui.Form.gsCustom.SetColumnProperty("gvAP","Ignore","ReadOnly",True)
+	
+	gui.Form.gsCustom.AddSummaryItem("gvAP","Amt_Invoice","SumAmt_Invoice","Sum","","","n")	
+	gui.Form.gsCustom.AddSummaryItem("gvAP","Amt_Transaction","SumAmt_Transaction","Sum","","","n")
+	gui.Form.gsCustom.AddSummaryItem("gvAP","Discount_Invoice","SumDiscount_Invoice","Sum","","","n")
+	gui.Form.gsCustom.AddSummaryItem("gvAP","Amt_Net","SumAmt_Net","Sum","","","n")
+	
+	gui.Form.gsCustom.AddStyleFormatCondition("gvMain","Error","Error","NotEqual","")
+	gui.Form.gsCustom.SetStyleFormatConditionProperty("gvMain","Error","Error","backcolor","LightSalmon")		
+	
+	f.Intrinsic.Control.If(v.DataTable.PreT.RowCount,>,0)
+		gui.Form.proBar1.Max(v.DataTable.PreT.RowCount--)
+		gui.Form.proBar1.Visible(True)
+	f.Intrinsic.Control.EndIf
+	
+	'Populate AP table	
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.PreT.RowCount--,1)
+		gui.Form.proBar1.Value(v.Local.iCnt)
+		f.Intrinsic.String.Format(v.DataTable.PreT(v.Local.iCnt).Ck_Date!FieldValString,"YYYY-MM-DD",v.Local.sHold)
+		f.Intrinsic.String.Build("Select ltrim(rtrim(Check_Num)) as Check_Num,Invoice,Batch_Num,Batch_Line,Date_Batch,Date_Invoice,Amt_Invoice,Amt_Transaction,Discount_Invoice,Purchase_Order from v_ap_Open_Items where Check_Num = '{0}' and Date_Check = '{1}'  and Batch_Code = '11' order by batch_num,Batch_Line",v.DataTable.PreT(v.Local.iCnt).Ck_No!FieldValSTring,v.Local.sHold,v.Local.sSQL)
+		f.Data.DataTable.CreateFromSQL("Temp","conx",v.Local.sSQL,True)
+		f.Intrinsic.Control.For(v.Local.iInner,0,v.DataTable.Temp.RowCount--,1)
+			f.Data.Datatable.AddRow("PreT$AP","Check_Num",v.DataTable.Temp(v.Local.iInner).Check_Num!FieldValString,"Invoice",v.DataTable.Temp(v.Local.iInner).Invoice!FieldValString,"Batch_Num",v.DataTable.Temp(v.Local.iInner).Batch_Num!FieldValString,"Batch_Line",v.DataTable.Temp(v.Local.iInner).Batch_Line!FieldValString,"Date_Batch",v.DataTable.Temp(v.Local.iInner).Date_Batch!FieldValString,"Date_Invoice",v.DataTable.Temp(v.Local.iInner).Date_Invoice!FieldValString,"Amt_Invoice",v.DataTable.Temp(v.Local.iInner).Amt_Invoice!FieldValString,"Amt_Transaction",v.DataTable.Temp(v.Local.iInner).Amt_Transaction!FieldValString,"Discount_Invoice",v.DataTable.Temp(v.Local.iInner).Discount_Invoice!FieldValString,"Purchase_Order",v.DataTable.Temp(v.Local.iInner).Purchase_Order!FieldValString)
+		f.Intrinsic.Control.Next(v.Local.iInner)
+		
+		'BN Mar 23 2022
+		f.Data.DataTable.Compute("Temp","sum(Amt_Transaction) - sum(Discount_Invoice)","",v.Local.sRet)
+		v.Local.fDetailTotal.Set(v.Local.sRet)		
+		f.Data.DataTable.SetValue("PreT",v.Local.iCnt,"DetailTotal",v.Local.fDetailTotal)
+		
+		f.Data.DataTable.Close("Temp")
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	gui.Form.proBar1.Visible(False)
+	'********************		
+
+	'General format
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","AllowSort",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","AllowFilter",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsFindAlwaysVisible",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsViewShowAutoFilterRow",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsDetailShowDetailTabs",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsViewShowGroupPanel",True)
+	
+	'Column format	
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectRow","AllowEdit",False)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectRow","ReadOnly",True)
+	'Width
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Vend_No","Width","40")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectRow","Width","50")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CK_Date","Width","65")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","Width","55")
+	'Header
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectRow","HeaderHAlignment","Center")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","HeaderHAlignment","far")
+	'BN, Mar 23 2022
+	gui.Form.gsCustom.SetColumnProperty("GVMain","DetailTotal","HeaderHAlignment","far")
+	'Header Font Bold
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Ck_Date","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Ck_No","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Vend_No","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectRow","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Payee","HeaderFontBold",True)
+	'BN, Mar 23 2022
+	gui.Form.gsCustom.SetColumnProperty("GVMain","DetailTotal","HeaderFontBold",True)
+	'Caption
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Vend_No","Caption","Vendor")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CK_Date","Caption","Check Date")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CK_No","Caption","Check Number")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","Caption","Amount")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Vend_No","Caption","Vendor #")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectRow","Caption","Select")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Payee","Caption","Payee")		
+	
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CK_OR_VOID","Visible",False)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","ACCT_NO","Visible",False)	
+	
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Ck_Date","CellBackColor","Beige")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Ck_No","CellBackColor","Beige")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","CellBackColor","Bisque")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Vend_No","CellBackColor","Beige")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectRow","CellBackColor","Beige")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Payee","CellBackColor","Beige")	
+	'BN, Mar 23 2022
+	gui.Form.gsCustom.SetColumnProperty("GVMain","DetailTotal","CellBackColor","LightSalmon")
+	
+	'Numeric
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","DisplayCustomNumeric","###,###,###,##0.00")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","DetailTotal","DisplayCustomNumeric","###,###,###,##0.00")
+	
+	'Custom date
+	Gui.Form.gsCustom.SetColumnProperty("GVMain","CK_Date","DisplayCustomDatetime","d")		
+	
+	f.Data.DataTable.SetValue("PreT",-1,"SelectRow",True)
+	gui.Form.gsCustom.MainView("GVMain")
+	
+	'Activate run button
+	gui.Form.cmdExport.Enabled(True)
+
+	f.Intrinsic.UI.CloseWaitDialog
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdGetData_Click.End
+
+Program.Sub.cmdExport_Click.Start
+f.Intrinsic.Control.Try	
+	V.Local.sError.Declare
+	v.Local.sSQL.Declare	
+	V.local.sExport.declare
+	v.Local.sFile.Declare	
+	v.Local.sMsg.Declare
+	v.Local.iCnt.Declare
+	v.Local.sLine.Declare
+	v.Local.bExist.Declare
+	v.Local.sHold.Declare
+	v.Local.sRet.Declare
+	v.Local.sCheckNumber.Declare
+	v.Local.fAmount.Declare
+	v.Local.fAmountTransaction.Declare
+	v.Local.sAmount.Declare
+	v.Local.sPayee.Declare
+	v.Local.sPayeeAddress1.Declare
+	v.Local.sPayeeAddress2.Declare
+	v.Local.sPayeeAddress3.Declare
+	v.Local.sPayeeCity.Declare
+	v.Local.sPayeeState.Declare
+	v.Local.sPayeeRouting.Declare
+	v.Local.sPayeeAccount.Declare
+	v.Local.sPayeeCodePostal.Declare
+	v.Local.iInner.Declare
+	v.Local.sFilter.Declare
+	
+	v.Local.sRouting.Declare
+	v.Local.sBankAccount.Declare
+	v.Local.sPayeeCountry.Declare
+	v.Local.sPayeeCountryCode.Declare
+	v.Local.bError.Declare
+	v.Local.sInvoice.Declare
+	v.Local.sDateInvoice.Declare
+	v.Local.sAmtNet.Declare
+	v.Local.fTotal.Declare
+	v.Local.fTotal2.Declare
+	v.Local.sCompanyRouter.Declare
+	v.Local.sCompanyAccount.Declare
+	v.Local.sPaymentDate.Declare
+	v.Local.dDateInvoice.Declare
+	
+	
+	'Check Export Folder
+	f.Intrinsic.File.DirExists(v.Screen.Form!txtExportFolder.Text.Trim,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.UI.Msgbox("Export Folder does not exist")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	
+	'Validate Router and Bank Account for the company	
+	f.ODBC.Connection!conC.OpenCommonConnection	
+		
+	'Deactivate All
+	f.Intrinsic.String.Build("Select Router,Account from GCG_6277_Bks  where rtrim(ltrim(Company)) = '{0}' and InUse = 1",v.Caller.CompanyCode,v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.CBks.Exists)
+		f.Data.DataTable.Close("CBks")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.CreateFromSQL("CBks","conC",v.Local.sSQL,True)
+	f.Intrinsic.Control.If(v.DataTable.CBks.RowCount,=,0)
+		f.ODBC.Connection!ConC.Close
+		f.Intrinsic.UI.Msgbox("No Bank Account setup for this company.","Attention")			
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.ElseIf(v.DataTable.CBks.RowCount,>,1)
+		f.ODBC.Connection!ConC.Close
+		f.Intrinsic.UI.Msgbox("Multiple Bank Accounts setup for this company. Please contact GSS.","Attention")						
+		f.Intrinsic.Control.ExitSub					
+	f.Intrinsic.Control.EndIf
+		
+	f.ODBC.Connection!ConC.Close	
+	
+	f.Intrinsic.String.WeakDecryption(v.DataTable.CBks(0).Router!FieldValString,v.Local.sCompanyRouter)
+	f.Intrinsic.String.LPad(v.Local.sCompanyRouter,"0",9,v.Local.sCompanyRouter)
+	f.Intrinsic.String.WeakDecryption(v.DataTable.CBks(0).Account!FieldValString,v.Local.sCompanyAccount)	
+	f.Intrinsic.String.LPad(v.Local.sCompanyAccount,"0",13,v.Local.sCompanyAccount)
+
+	
+	'Get Company header
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select Top 1 Name_Company, Address1, Address2, City, State, Code_Zip, Country from V_Company",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Ambient.ExecuteAndReturnEOF)
+		f.Intrinsic.UI.Msgbox("Please setup company Name and Address.","Attention")
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	f.Intrinsic.String.Left(v.Local.sRet(0),35,v.Global.sCompanyName)
+	f.Intrinsic.String.Left(v.Local.sRet(1),35,v.Global.sAddress1)
+	f.Intrinsic.String.Left(v.Local.sRet(2),35,v.Global.sAddress2)
+	f.Intrinsic.String.Left(v.Local.sRet(3),30,v.Global.sCity)
+	f.Intrinsic.String.Left(v.Local.sRet(4),2,v.Global.sState)
+	f.Intrinsic.String.Left(v.Local.sRet(5),15,v.Global.sZip)
+	v.Global.sCountry.Set("US")
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Processing...")
+	
+	f.Intrinsic.Control.If(v.DataView.PreT!vSelected.Exists)
+		f.Data.DataView.Close("PreT","vSelected")
+	f.Intrinsic.Control.EndIf	
+	F.Data.DataView.Create("PreT","vSelected",22,"SelectRow = 1","")	
+
+	f.Intrinsic.Control.If(v.DataView.PreT$AP!vChild.Exists)
+		f.Data.DataView.Close("PreT$AP","vChild")
+	f.Intrinsic.Control.EndIf	
+	F.Data.DataView.Create("PreT$AP","vChild")	
+	
+	f.Intrinsic.Control.If(v.DataTable.PreT.RowCount,>,0)
+		gui.Form.proBar1.Max(v.DataTable.PreT.RowCount)
+		gui.Form.proBar1.Visible(True)
+	f.Intrinsic.Control.EndIf
+	
+	'Reset Error
+	f.Data.DataView.SetValue("PreT","vSelected",-1,"Error","")
+	f.Data.DataTable.AcceptChanges("PreT")
+	
+	f.Intrinsic.String.Mid(v.Ambient.Date.FormatYYYYMMDD,5,2,v.Local.sHold)
+	v.Local.sPaymentDate.Set(v.Ambient.Date.FormatYYYYMMDD)
+	f.Intrinsic.String.Build("{0}/{1}/{2}",v.Local.sHold,v.Local.sPaymentDate.Right2,v.Local.sPaymentDate.left4,v.Local.sPaymentDate)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.Dataview.PreT!vSelected.RowCount--,1)
+		gui.Form.proBar1.Value(v.Local.iCnt)
+		'Summary Record
+		f.Intrinsic.String.Build("S,{0},{1},,{2},{3},{4},{5},{6},{7},{8},{9},,,",v.Local.sPaymentDate,v.Global.sCompanyName.UCase,v.Global.sAddress1.UCase,v.Global.sAddress2.UCase,v.Global.sCity.UCase,v.Global.sState.UCase,v.Global.sZip.UCase,v.Global.sCountry.UCase,v.Local.sCompanyRouter,v.Local.sCompanyAccount,v.Local.sLine)
+		f.Intrinsic.Control.If(v.Local.iCnt,=,0)
+			v.Local.sExport.Set(v.Local.sLine)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sExport,v.Ambient.NewLine,v.Local.sLine,v.Local.sExport)
+		f.Intrinsic.Control.EndIf		
+		
+		'Payee Line
+		v.Local.sCheckNumber.Set(v.Dataview.PreT!vSelected(v.Local.iCnt).Ck_No!FieldValTrim)
+		f.Intrinsic.Control.If(v.Local.sCheckNumber.Length,>,10)
+			v.Local.sMsg.Set("Invalid Check Number")
+		f.Intrinsic.Control.Else
+			v.Local.sMsg.Set("")
+		f.Intrinsic.Control.EndIf
+		v.Local.fAmount.Set(v.Dataview.PreT!vSelected(v.Local.iCnt).Amount!FieldValString)
+		f.Intrinsic.String.Format(v.Local.fAmount,"0.00",v.Local.sAmount)
+		f.Intrinsic.String.Replace(v.Dataview.PreT!vSelected(v.Local.iCnt).Payee!FieldValTrim,","," ",v.Local.sPayee)
+		
+		f.Intrinsic.String.Build("select Top 1 Address1_Pay,Address2_Pay,City_Pay,State_Pay,Code_Zip_Pay,Country_Pay  from v_VENDOR_PAY_TO where vendor = '{0}' ",v.Dataview.PreT!vSelected(v.Local.iCnt).Vend_No!FieldValString,v.Local.sSQL)
+		f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+		f.Intrinsic.Control.If(v.Ambient.ExecuteAndReturnEOF)
+			f.Intrinsic.String.Build("{0}::No Addresss",v.Local.sMsg,v.Local.sMsg)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+			v.Local.sPayeeAddress1.Set(v.Local.sRet(0).Trim)
+			v.Local.sPayeeAddress2.Set(v.Local.sRet(1).Trim)
+			v.Local.sPayeeCity.Set(v.Local.sRet(2).Trim)
+			v.Local.sPayeeState.Set(v.Local.sRet(3).Trim)
+			v.Local.sPayeeCodePostal.Set(v.Local.sRet(4).Trim)
+			v.Local.spayeeCountry.Set(v.Local.sRet(5).Trim)
+			f.Intrinsic.Control.If(v.Local.sPayeeAddress1,=,"")
+				f.Intrinsic.String.Build("{0}::No Addresss 1",v.Local.sMsg,v.Local.sMsg)
+			f.Intrinsic.Control.EndIf
+			
+			f.Intrinsic.Control.If(v.Local.sPayeeCity,=,"")
+				f.Intrinsic.String.Build("{0}::No City",v.Local.sMsg,v.Local.sMsg)
+			f.Intrinsic.Control.EndIf
+			
+			f.Intrinsic.Control.If(v.Local.sPayeeState,=,"")
+				f.Intrinsic.String.Build("{0}::No State",v.Local.sMsg,v.Local.sMsg)
+			f.Intrinsic.Control.EndIf	
+			
+			f.Intrinsic.Control.If(v.Local.sPayeeCodePostal,=,"")
+				f.Intrinsic.String.Build("{0}::No Zipcode",v.Local.sMsg,v.Local.sMsg)
+			f.Intrinsic.Control.EndIf	
+			
+		v.Local.sPayeeCountry.Set(v.Local.sPayeeCountry.UCase)
+		f.Intrinsic.Control.If(v.Local.sPayeeCountry,=,"")
+			v.Local.sPayeeCountryCode.Set("US")
+		f.Intrinsic.Control.Else	
+			v.Local.sPayeeCountryCode.Set(v.dictionary.dictCodes![v.Local.sPayeeCountry])
+			f.Intrinsic.Control.If(v.Local.sPayeeCountryCode,=,"NotFound")
+				f.Intrinsic.Control.If(v.Local.sPayeeCountry,=,"M?XICO")
+					v.Local.sPayeeCountryCode.Set("MX")
+				f.Intrinsic.Control.ElseIf(v.Local.sPayeeCountry,=,"USA",or,v.Local.sPayeeCountry,=,"US")
+					v.Local.sPayeeCountryCode.Set("US")
+				f.Intrinsic.Control.ElseIf(v.Local.sPayeeCountry,=,"HONDURAS CA")
+					v.Local.sPayeeCountryCode.Set("HN")
+				f.Intrinsic.Control.Else
+					f.Intrinsic.String.Build("{0}::No Country Code Found for {1}",v.Local.sMsg,v.Local.sPayeeCountry,v.Local.sMsg)
+					v.Local.sPayeeCountryCode.Set("countrynotfound")
+				f.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf		
+			
+		f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.String.Replace(v.Local.sPayeeAddress1,","," ",v.Local.sPayeeAddress1)
+		f.Intrinsic.String.Replace(v.Local.sPayeeAddress2,","," ",v.Local.sPayeeAddress2)
+		f.Intrinsic.String.Replace(v.Local.sPayeeCity,","," ",v.Local.sPayeeCity)
+		f.Intrinsic.String.Replace(v.Local.sPayeeState,","," ",v.Local.sPayeeState)
+		f.Intrinsic.String.Replace(v.Local.sPayeeCodePostal,","," ",v.Local.sPayeeCodePostal)
+		
+		v.Local.sRouting.Set("")
+		v.Local.sBankAccount.Set("")
+		f.Intrinsic.String.Build("P,{0},{1},{2},{3},{4},,{5},{6},{7},{8},{9},{10},{13},{11},{12},,",v.Screen.Form!ddlType.Text.Trim,v.Local.sCheckNumber.left10,v.Local.sAmount,v.Dataview.PreT!vSelected(v.Local.iCnt).Vend_no!FieldValTrim,v.Local.sPayee,v.Local.sPayeeAddress1.left57,v.Local.sPayeeAddress2.left55,v.Local.sPayeeAddress3.left55,v.Local.sPayeeCity.left30,v.Local.sPayeeState.Left2,v.Local.sPayeeCodePostal.Left15,v.Local.sRouting,v.Local.sBankAccount,v.Local.sPayeeCountryCode,v.Local.sLine)
+		f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sExport,v.Ambient.NewLine,v.Local.sLine,v.Local.sExport)		
+		
+		'Remittance line
+		'BN, Mar 23 2022 modified with Ignore flag = False
+		f.Intrinsic.String.Build("Check_Num = '{0}' and Ignore = False",v.Dataview.PreT!vSelected(v.Local.iCnt).Ck_No!FieldValSTring,v.Local.sFilter)		
+		f.Data.DataView.SetFilter("PreT","vChild",v.Local.sFilter)
+		f.Intrinsic.Control.If(v.DataView.PreT!vChild.RowCount,=,0)
+			f.Intrinsic.String.Build("{0}::No Invoice",v.Local.sMsg,v.Local.sMsg)
+		f.Intrinsic.Control.EndIf
+		
+		'AT Mar 22 2022
+		f.Data.DataTable.Compute("PreT$AP","Sum(Amt_Net)",v.Local.sFilter,v.Local.sRet)
+		f.Intrinsic.Control.If(v.Local.sRet.Trim,<>,"")
+			v.Local.fTotal.Set(v.Local.sRet)
+			v.Local.fTotal2.Set(v.Dataview.PreT!vSelected(v.Local.iCnt).Amount!FieldValSTring)
+			f.Intrinsic.Control.If(v.Local.fTotal,<>,v.Local.fTotal2)
+				f.Intrinsic.String.Build("{0}::Mismatched: Check Amount vs Invoice Total Amount ",v.Local.sMsg,v.Local.sMsg)
+			f.Intrinsic.Control.EndIf			
+		f.Intrinsic.Control.EndIf		
+		
+		f.Intrinsic.Control.For(v.Local.iInner,0,v.DataView.PreT$AP!vChild.RowCount--,1)	
+			v.Local.sInvoice.Set(v.DataView.PreT$AP!vChild(v.Local.iInner).Invoice!FieldValTrim)		
+			
+			'Date Invoice
+			v.Local.dDateInvoice.Set(v.DataView.PreT$AP!vChild(v.Local.iInner).Date_Invoice!FieldValTrim)
+			f.Intrinsic.String.Mid(v.Local.dDateInvoice.FormatYYYYMMDD,5,2,v.Local.sHold)
+			v.Local.sDateInvoice.Set(v.Local.dDateInvoice.FormatYYYYMMDD)
+			f.Intrinsic.String.Build("{0}/{1}/{2}",v.Local.sHold,v.Local.sDateInvoice.Right2,v.Local.sDateInvoice.left4,v.Local.sDateInvoice)
+			
+			v.Local.fAmountTransaction.Set(v.DataView.PreT$AP!vChild(v.Local.iInner).Amt_Transaction!FieldValString)
+			f.Intrinsic.String.Format(v.Local.fAmountTransaction,"0.00",v.Local.sAmtNet)			
+			f.Intrinsic.String.Build("I,{0},{1},,,,{2}",v.Local.sInvoice,v.Local.sDateInvoice,v.Local.sAmtNet,v.Local.sLine)
+			f.Intrinsic.String.Build("{0}{1}{2}",v.Local.sExport,v.Ambient.NewLine,v.Local.sLine,v.Local.sExport)		
+		f.Intrinsic.Control.Next(v.Local.iInner)
+		
+		f.Data.DataView.SetValue("PreT","vSelected",v.Local.iCnt,"Error",v.Local.sMsg)
+	
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	gui.Form.proBar1.Visible(False)
+	
+	f.Data.DataTable.AcceptChanges("PreT")
+	
+	f.Intrinsic.Control.If(v.DataView.PreT!vError.Exists)
+		f.Data.DataView.Close("PreT","vError")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataView.Create("PreT","vError",22,"Trim(Error) <> '' and SelectRow = 1","")
+	f.Intrinsic.Control.If(v.DataView.PreT!vError.RowCount,>,0)
+		f.Intrinsic.UI.Msgbox("Errors. Please review Error column.","Attention")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	'Write file
+	f.Intrinsic.String.Build("{0}\{1}_{2}_{3}.csv",v.Screen.Form!txtExportFolder.Text.Trim,v.Ambient.Date.FormatYYYYMMDD,v.Ambient.Now.FormatHHNNSS,v.Caller.User,v.Local.sFile)
+	f.Intrinsic.File.String2File(v.Local.sFile,v.Local.sExport)
+	
+	
+	f.Intrinsic.String.Build("Generated file {0}",v.Local.sFile,v.Local.sMsg)
+	f.Intrinsic.UI.Msgbox(v.Local.sMsg,"Complete Export")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdExport_Click.End
+
+Program.Sub.cmdExpandAll_Click.Start
+f.Intrinsic.Control.Try	
+	v.Local.sError.Declare
+	v.Local.iCnt.Declare
+	
+	f.Intrinsic.Control.If(v.DataTable.PreT.Exists)
+		f.Intrinsic.Control.If(v.DataTable.PreT.RowCount,>,0)
+			gui.Form.proBar1.Max(v.DataTable.PreT.RowCount--)
+			gui.Form.proBar1.Visible(True)
+		f.Intrinsic.Control.EndIf
+	
+		f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.PreT.RowCount--,1)
+			gui.Form.proBar1.Value(v.Local.iCnt)
+			gui.Form.gsCustom.ExpandMasterRow("GVMain",v.Local.iCnt)		
+		f.Intrinsic.Control.Next(v.Local.iCnt)
+		gui.Form.proBar1.Visible(False)	
+	f.Intrinsic.Control.EndIf	
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.cmdExpandAll_Click.End
+
+Program.Sub.cmdCollapseAll_Click.Start
+f.Intrinsic.Control.Try	
+	v.Local.sError.Declare
+	v.Local.iCnt.Declare
+	
+	f.Intrinsic.Control.If(v.DataTable.PreT.Exists)
+		f.Intrinsic.Control.If(v.DataTable.PreT.RowCount,>,0)
+			gui.Form.proBar1.Max(v.DataTable.PreT.RowCount--)
+			gui.Form.proBar1.Visible(True)
+		f.Intrinsic.Control.EndIf
+	
+		f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.PreT.RowCount--,1)
+			gui.Form.proBar1.Value(v.Local.iCnt)
+			gui.Form.gsCustom.CollapseMasterRow("GVMain",v.Local.iCnt)		
+		f.Intrinsic.Control.Next(v.Local.iCnt)
+		gui.Form.proBar1.Visible(False)	
+	f.Intrinsic.Control.EndIf	
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.cmdCollapseAll_Click.End
+
+Program.Sub.gsCustom_RowCellClick.Start
+f.Intrinsic.Control.Try	
+	v.Local.sError.Declare
+	v.Local.bFlag.Declare
+	v.Local.sRet.Declare
+	v.Local.sCheck.Declare
+	v.Local.sDate.Declare
+	v.Local.sFilter.Declare
+	v.Local.fDetailTotal.Declare
+	
+	f.Intrinsic.Control.If(v.Args.Column.UCase,=,"SELECTROW")
+		v.Local.bFlag.Set(v.DataTable.PreT(v.Args.RowIndex).SelectRow!FieldValString)
+		f.Data.DataTable.SetValue("PreT",v.Args.RowIndex,"SelectRow",v.Local.bFlag.Not)
+		
+	'BN, Mar 23 2022	
+	f.Intrinsic.Control.ElseIf(v.Args.Column.UCase,=,"IGNORE")
+		'Calculate new total
+		v.Local.bFlag.Set(v.DataTable.PreT$AP(v.Args.RowIndex).Ignore!FieldValString)
+		f.Data.DataTable.SetValue("PreT$AP",V.Args.RowIndex,"Ignore",v.Local.bFlag.Not)	
+		v.Local.sCheck.Set(v.DataTable.PreT$AP(v.Args.RowIndex).Check_Num!FieldValString)
+		f.Intrinsic.String.Build("Check_Num = '{0}' and Ignore = False",v.Local.sCheck,v.Local.sFilter)
+		f.Data.DataTable.Compute("PreT$AP","Sum(Amt_Net)",v.Local.sFilter,v.Local.sRet)
+		v.Local.fDetailTotal.Set(v.Local.sRet)
+		'Set new total to parent table
+		f.Intrinsic.String.Build("Ck_No = '{0}'",v.Local.sCheck,v.Local.sFilter)
+		f.Data.DataTable.Select("PreT",v.Local.sFilter,v.Local.sRet)
+		f.Intrinsic.Control.If(v.Local.sRet,<>,"***NORETURN***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			V.Local.sRet.Set(V.Local.sRet(0))
+			F.Data.DataTable.SetValue("PreT",V.Local.sRet,"DetailTotal",V.Local.fDetailTotal)
+		f.Intrinsic.Control.EndIf
+		
+	f.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsCustom_RowCellClick.End
+
+Program.Sub.cmdSelectAll_Click.Start
+f.Intrinsic.Control.Try	
+	v.Local.sError.Declare
+
+	f.Intrinsic.Control.If(v.DataTable.PreT.Exists)
+		f.Data.DataTable.SetValue("PreT",-1,"SelectRow",True)
+	f.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdSelectAll_Click.End
+
+Program.Sub.cmdDeselectAll_Click.Start
+f.Intrinsic.Control.Try	
+	v.Local.sError.Declare
+
+	f.Intrinsic.Control.If(v.DataTable.PreT.Exists)
+		f.Data.DataTable.SetValue("PreT",-1,"SelectRow",False)
+	f.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdDeselectAll_Click.End
+
+Program.Sub.Create_Country_Codes.Start
+f.Intrinsic.Control.Try
+	v.Local.bEx.Declare
+	v.Local.sError.Declare
+	
+	f.Intrinsic.Control.If(v.DataTable.Codes.Exists)
+		f.Data.DataTable.Close("Codes")
+	f.Intrinsic.Control.EndIf
+	
+	f.Data.DataTable.CreateFromString("Codes","AFGHANISTAN*!*AF@!@LAND ISLANDS*!*AX@!@ALBANIA*!*AL@!@ALGERIA*!*DZ@!@AMERICAN SAMOA*!*AS@!@ANDORRA*!*AD@!@ANGOLA*!*AO@!@ANGUILLA*!*AI@!@ANTARCTICA*!*AQ@!@ANTIGUA AND BARBUDA*!*AG@!@ARGENTINA*!*AR@!@ARMENIA*!*AM@!@ARUBA*!*AW@!@AUSTRALIA*!*AU@!@AUSTRIA*!*AT@!@AZERBAIJAN*!*AZ@!@BAHRAIN*!*BH@!@BAHAMAS*!*BS@!@BANGLADESH*!*BD@!@BARBADOS*!*BB@!@BELARUS*!*BY@!@BELGIUM*!*BE@!@BELIZE*!*BZ@!@BENIN*!*BJ@!@BERMUDA*!*BM@!@BHUTAN*!*BT@!@BOLIVIA*!*BO@!@BONAIRE*!*BQ@!@BOSNIA AND HERZEGOVINA*!*BA@!@BOTSWANA*!*BW@!@BOUVET ISLAND*!*BV@!@BRAZIL*!*BR@!@BRITISH INDIAN OCEAN TERRITORY*!*IO@!@BRUNEI DARUSSALAM*!*BN@!@BULGARIA*!*BG@!@BURKINA FASO*!*BF@!@BURUNDI*!*BI@!@CAMBODIA*!*KH@!@CAMEROON*!*CM@!@CANADA*!*CA@!@CAPE VERDE*!*CV@!@CAYMAN ISLANDS*!*KY@!@CENTRAL AFRICAN REPUBLIC*!*CF@!@CHAD*!*TD@!@CHILE*!*CL@!@CHINA*!*CN@!@CHRISTMAS ISLAND*!*CX@!@COCOS (KEELING) ISLANDS*!*CC@!@COLOMBIA*!*CO@!@COMOROS*!*KM@!@CONGO*!*CG@!@CONGO*!*CD@!@COOK ISLANDS*!*CK@!@COSTA RICA*!*CR@!@CTE D'IVOIRE*!*CI@!@CROATIA*!*HR@!@CUBA*!*CU@!@CURAAO*!*CW@!@CYPRUS*!*CY@!@CZECH REPUBLIC*!*CZ@!@DENMARK*!*DK@!@DJIBOUTI*!*DJ@!@DOMINICA*!*DM@!@DOMINICAN REPUBLIC*!*DO@!@ECUADOR*!*EC@!@EGYPT*!*EG@!@EL SALVADOR*!*SV@!@EQUATORIAL GUINEA*!*GQ@!@ERITREA*!*ER@!@ESTONIA*!*EE@!@ETHIOPIA*!*ET@!@FALKLAND ISLANDS (MALVINAS)*!*FK@!@FAROE ISLANDS*!*FO@!@FIJI*!*FJ@!@FINLAND*!*FI@!@FRANCE*!*FR@!@FRENCH GUIANA*!*GF@!@FRENCH POLYNESIA*!*PF@!@FRENCH SOUTHERN TERRITORIES*!*TF@!@GABON*!*GA@!@GAMBIA*!*GM@!@GEORGIA*!*GE@!@GERMANY*!*DE@!@GHANA*!*GH@!@GIBRALTAR*!*GI@!@GREECE*!*GR@!@GREENLAND*!*GL@!@GRENADA*!*GD@!@GUADELOUPE*!*GP@!@GUAM*!*GU@!@GUATEMALA*!*GT@!@GUERNSEY*!*GG@!@GUINEA*!*GN@!@GUINEA-BISSAU*!*GW@!@GUYANA*!*GY@!@HAITI*!*HT@!@HEARD ISLAND AND MCDONALD ISLANDS*!*HM@!@HOLY SEE (VATICAN CITY STATE)*!*VA@!@HONDURAS*!*HN@!@HONG KONG*!*HK@!@HUNGARY*!*HU@!@ICELAND*!*IS@!@INDIA*!*IN@!@INDONESIA*!*ID@!@IRAN*!*IR@!@IRAQ*!*IQ@!@IRELAND*!*IE@!@ISLE OF MAN*!*IM@!@ISRAEL*!*IL@!@ITALY*!*IT@!@JAMAICA*!*JM@!@JAPAN*!*JP@!@JERSEY*!*JE@!@JORDAN*!*JO@!@KAZAKHSTAN*!*KZ@!@KENYA*!*KE@!@KIRIBATI*!*KI@!@KOREA*!*KP@!@KOREA*!*KR@!@KUWAIT*!*KW@!@KYRGYZSTAN*!*KG@!@LAO PEOPLE'S DEMOCRATIC REPUBLIC*!*LA@!@LATVIA*!*LV@!@LEBANON*!*LB@!@LESOTHO*!*LS@!@LIBERIA*!*LR@!@LIBYA*!*LY@!@LIECHTENSTEIN*!*LI@!@LITHUANIA*!*LT@!@LUXEMBOURG*!*LU@!@MACAO*!*MO@!@MACEDONIA*!*MK@!@MADAGASCAR*!*MG@!@MALAWI*!*MW@!@MALAYSIA*!*MY@!@MALDIVES*!*MV@!@MALI*!*ML@!@MALTA*!*MT@!@MARSHALL ISLANDS*!*MH@!@MARTINIQUE*!*MQ@!@MAURITANIA*!*MR@!@MAURITIUS*!*MU@!@MAYOTTE*!*YT@!@MEXICO*!*MX@!@MICRONESIA*!*FM@!@MOLDOVA*!*MD@!@MONACO*!*MC@!@MONGOLIA*!*MN@!@MONTENEGRO*!*ME@!@MONTSERRAT*!*MS@!@MOROCCO*!*MA@!@MOZAMBIQUE*!*MZ@!@MYANMAR*!*MM@!@NAMIBIA*!*NA@!@NAURU*!*NR@!@NEPAL*!*NP@!@NETHERLANDS*!*NL@!@NEW CALEDONIA*!*NC@!@NEW ZEALAND*!*NZ@!@NICARAGUA*!*NI@!@NIGER*!*NE@!@NIGERIA*!*NG@!@NIUE*!*NU@!@NORFOLK ISLAND*!*NF@!@NORTHERN MARIANA ISLANDS*!*MP@!@NORWAY*!*NO@!@OMAN*!*OM@!@PAKISTAN*!*PK@!@PALAU*!*PW@!@PALESTINE*!*PS@!@PANAMA*!*PA@!@PAPUA NEW GUINEA*!*PG@!@PARAGUAY*!*PY@!@PERU*!*PE@!@PHILIPPINES*!*PH@!@PITCAIRN*!*PN@!@POLAND*!*PL@!@PORTUGAL*!*PT@!@PUERTO RICO*!*PR@!@QATAR*!*QA@!@RUNION*!*RE@!@ROMANIA*!*RO@!@RUSSIAN FEDERATION*!*RU@!@RWANDA*!*RW@!@SAINT BARTHLEMY*!*BL@!@SAINT HELENA*!*SH@!@SAINT KITTS AND NEVIS*!*KN@!@SAINT LUCIA*!*LC@!@SAINT MARTIN (FRENCH PART)*!*MF@!@SAINT PIERRE AND MIQUELON*!*PM@!@SAINT VINCENT AND THE GRENADINES*!*VC@!@SAMOA*!*WS@!@SAN MARINO*!*SM@!@SAO TOME AND PRINCIPE*!*ST@!@SAUDI ARABIA*!*SA@!@SENEGAL*!*SN@!@SERBIA*!*RS@!@SEYCHELLES*!*SC@!@SIERRA LEONE*!*SL@!@SINGAPORE*!*SG@!@SINT MAARTEN (DUTCH PART)*!*SX@!@SLOVAKIA*!*SK@!@SLOVENIA*!*SI@!@SOLOMON ISLANDS*!*SB@!@SOMALIA*!*SO@!@SOUTH AFRICA*!*ZA@!@SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS*!*GS@!@SOUTH SUDAN*!*SS@!@SPAIN*!*ES@!@SRI LANKA*!*LK@!@SUDAN*!*SD@!@SURINAME*!*SR@!@SVALBARD AND JAN MAYEN*!*SJ@!@SWAZILAND*!*SZ@!@SWEDEN*!*SE@!@SWITZERLAND*!*CH@!@SYRIAN ARAB REPUBLIC*!*SY@!@TAIWAN*!*TW@!@TAJIKISTAN*!*TJ@!@TANZANIA*!*TZ@!@THAILAND*!*TH@!@TIMOR-LESTE*!*TL@!@TOGO*!*TG@!@TOKELAU*!*TK@!@TONGA*!*TO@!@TRINIDAD AND TOBAGO*!*TT@!@TUNISIA*!*TN@!@TURKEY*!*TR@!@TURKMENISTAN*!*TM@!@TURKS AND CAICOS ISLANDS*!*TC@!@TUVALU*!*TV@!@UGANDA*!*UG@!@UKRAINE*!*UA@!@UNITED ARAB EMIRATES*!*AE@!@UNITED KINGDOM*!*GB@!@UNITED STATES*!*US@!@UNITED STATES MINOR OUTLYING ISLANDS*!*UM@!@URUGUAY*!*UY@!@UZBEKISTAN*!*UZ@!@VANUATU*!*VU@!@VENEZUELA*!*VE@!@VIET NAM*!*VN@!@VIRGIN ISLANDS*!*VG@!@VIRGIN ISLANDS*!*VI@!@WALLIS AND FUTUNA*!*WF@!@WESTERN SAHARA*!*EH@!@YEMEN*!*YE@!@ZAMBIA*!*ZM@!@ZIMBABWE*!*ZW","Country*!*Code","String*!*String","*!*","@!@",True)
+	
+	f.Data.Dictionary.Exists("dictCodes",v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx)
+		f.Data.Dictionary.Close("dictCodes")
+	f.Intrinsic.Control.EndIf
+	f.Data.Dictionary.CreateFromDatatable("dictCodes","Codes","Country","Code")
+	f.Data.Dictionary.SetDefaultReturn("dictCodes","NotFound")
+	
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Create_Country_Codes.End
+
+Program.Sub.cmdSettings_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.bEx.Declare
+	v.Local.sError.Declare
+	
+	f.Global.Security.IsInGroup(v.Caller.User,"POSPAY",V.Caller.CompanyCode,V.Local.bEx)
+	F.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.UI.Msgbox("User is not in security group POSPAY to access this feature.","Invalid Security")
+		f.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	gui.Settings..Visible(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdSettings_Click.End
+
+Program.Sub.Settings_UnLoad.Start
+gui.Settings..Visible(False)
+Program.Sub.Settings_UnLoad.End
+
+Program.Sub.cmdAddBankAccount_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sRouter.Declare
+	v.Local.sAccount.Declare
+	v.Local.sEncryptedRouter.Declare
+	v.Local.sEncryptedAccount.Declare
+	v.Local.sCompany.Declare
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	
+	v.Local.sRouter.Set(v.Screen.Settings!txtRouter.Text.Trim)
+	v.Local.sAccount.Set(v.Screen.Settings!txtBankAccount.Text.Trim)
+	v.Local.sCompany.Set(v.Screen.Settings!txtCompanyCode.Text.Trim)
+	
+	f.Intrinsic.String.Replace(v.Local.sCompany.UCase,"'","",v.Local.sCompany)
+	f.Intrinsic.String.Replace(v.Local.sRouter.UCase,"'","",v.Local.sRouter)
+	f.Intrinsic.String.Replace(v.Local.sAccount.UCase,"'","",v.Local.sAccount)
+	
+	f.Intrinsic.String.WeakEncryption(v.Local.sRouter.UCase,v.Local.sEncryptedRouter)
+	f.Intrinsic.String.WeakEncryption(v.Local.sAccount.UCase,v.Local.sEncryptedAccount)
+
+	f.Intrinsic.UI.InvokeWaitDialog("Saving...")
+	f.ODBC.Connection!conC.OpenCommonConnection
+	
+	f.Intrinsic.String.Build("Select * from GCG_6277_Bks where Company = '{0}' and Router = '{1}' and Account = '{2}'",v.Local.sCompany,v.Local.sEncryptedRouter,v.Local.sEncryptedAccount,v.Local.sSQL)
+	f.ODBC.Connection!conC.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Ambient.ExecuteAndReturnEOF)	
+		f.Intrinsic.String.Build("Insert into GCG_6277_Bks ( Company , Router , Account ) values ('{0}','{1}','{2}')",v.Local.sCompany,v.Local.sEncryptedRouter,v.Local.sEncryptedAccount,v.Local.sSQL)
+		f.ODBC.Connection!conC.Execute(v.Local.sSQL)
+		f.Data.DataTable.AddRow("Bks","COMPANY",v.Local.sCompany,"Router",v.Local.sRouter,"Account",v.Local.sAccount,"Delete","Delete","Inuse",False)
+	F.Intrinsic.Control.Else
+		f.ODBC.Connection!ConC.Close	
+		f.Intrinsic.UI.CloseWaitDialog
+		F.Intrinsic.UI.Msgbox("Account exists for this company.","Attention")
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf
+	
+	f.ODBC.Connection!ConC.Close	
+	f.Intrinsic.UI.CloseWaitDialog
+	
+	f.Intrinsic.Control.CallSub(GetAccount)	
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdAddBankAccount_Click.End
+
+Program.Sub.gsBankAccounts_RowCellClick.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.bFlag.Declare
+	v.Local.sFilter.Declare
+	v.Local.sEncryptedRouter.Declare
+	v.Local.sEncryptedAccount.Declare
+	v.Local.sSQL.Declare
+	v.Local.iFlag.Declare	
+	
+	f.Intrinsic.Control.If(v.Args.Column.UCase,=,"INUSE")
+		V.Local.bFlag.Set(V.DataTable.Bks(V.Args.RowIndex).InUse!FieldValString)
+		f.Intrinsic.String.Build("Trim(Company) = '{0}'",v.DataTable.Bks(v.Args.RowIndex).Company!FieldValTrim,v.Local.sFilter)		
+		f.Data.DataView.Create("Bks","vBks",22,v.Local.sFilter,"")		
+		f.Data.DataView.SetValue("Bks","vBks",-1,"InUse",False)
+		F.Data.DataView.Close("Bks","vBks")		
+		f.Data.DataTable.SetValue("Bks",v.Args.RowIndex,"InUse",v.Local.bFlag.Not)	
+		
+		f.ODBC.Connection!conC.OpenCommonConnection	
+	
+		f.Intrinsic.Control.If(v.Local.bFlag.Not,=,True)
+			v.Local.iFlag.Set(1)
+		f.Intrinsic.Control.Else
+			v.Local.iFlag.Set(0)
+		f.Intrinsic.Control.EndIf
+	
+		f.Intrinsic.String.WeakEncryption(v.DataTable.Bks(v.Args.RowIndex).Router!FieldValTrim,v.Local.sEncryptedRouter)
+		f.Intrinsic.String.WeakEncryption(v.DataTable.Bks(v.Args.RowIndex).Account!FieldValTrim,v.Local.sEncryptedAccount)	
+		
+		'Deactivate All
+		f.Intrinsic.String.Build("Update GCG_6277_Bks set InUse = 0 where rtrim(ltrim(Company)) = '{0}' ",v.DataTable.Bks(v.Args.RowIndex).Company!FieldValTrim,v.Local.sSQL)
+		f.ODBC.Connection!conC.Execute(v.Local.sSQL)
+		
+		'Activate
+		f.Intrinsic.String.Build("Update GCG_6277_Bks set InUse = {3} where rtrim(ltrim(Company)) = '{0}' and Router = '{1}' and Account = '{2}'",v.DataTable.Bks(v.Args.RowIndex).Company!FieldValTrim,v.Local.sEncryptedRouter,v.Local.sEncryptedAccount,v.Local.iFlag,v.Local.sSQL)
+		f.ODBC.Connection!conC.Execute(v.Local.sSQL)		
+		
+		f.ODBC.Connection!ConC.Close
+		
+		f.Intrinsic.Control.CallSub(GetAccount)
+		
+	f.Intrinsic.Control.ElseIf(v.Args.Column.UCase,=,"DELETE")	
+		f.Intrinsic.String.WeakEncryption(v.DataTable.Bks(v.Args.RowIndex).Router!FieldValTrim,v.Local.sEncryptedRouter)
+		f.Intrinsic.String.WeakEncryption(v.DataTable.Bks(v.Args.RowIndex).Account!FieldValTrim,v.Local.sEncryptedAccount)			
+		
+		f.Intrinsic.String.Build("Delete from GCG_6277_Bks where rtrim(ltrim(Company)) = '{0}' and Router = '{1}' and Account = '{2}'",v.DataTable.Bks(v.Args.RowIndex).Company!FieldValTrim,v.Local.sEncryptedRouter,v.Local.sEncryptedAccount,v.Local.sSQL)
+		f.ODBC.Connection!conC.OpenCommonConnection
+		f.ODBC.Connection!conC.Execute(v.Local.sSQL)
+		f.ODBC.Connection!ConC.Close
+		f.Data.DataTable.DeleteRow("Bks",v.Args.RowIndex)
+		
+		f.Intrinsic.Control.CallSub(GetAccount)
+		
+	f.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsBankAccounts_RowCellClick.End
+
+Program.Sub.GetAccount.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.bExist.Declare
+	v.Local.sRet.Declare
+	v.Local.iCnt.Declare
+	v.Local.sRouter.Declare
+	v.Local.sAccount.Declare
+
+	'Get Accounts
+	f.ODBC.Connection!conC.OpenCommonConnection
+	Function.ODBC.Connection!conC.TableExists("GCG_6277_Bks",v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.ODBC.Connection!conC.Execute("CREATE TABLE GCG_6277_Bks ( Company CHAR(3), Router Varchar(50), Account Varchar(50),InUse Bit DEFAULT '0' NOT NULL)")
+	f.Intrinsic.Control.Endif	
+	f.Intrinsic.Control.If(v.DataTable.Bks.Exists)
+		f.Data.DataTable.Close("Bks")
+	f.Intrinsic.Control.EndIf
+	
+	f.Data.DataTable.CreateFromSQL("Bks","conC","Select Company, Router, Account, InUse from GCG_6277_Bks order by Company,Router,Account",True)	
+	
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.Bks.RowCount--,1)
+		f.Intrinsic.String.WeakDecryption(v.DataTable.Bks(v.Local.iCnt).Router!FieldValString,v.Local.sRouter)
+		f.Intrinsic.String.WeakDecryption(v.DataTable.Bks(v.Local.iCnt).Account!FieldValString,v.Local.sAccount)
+		f.Data.DataTable.SetValue("Bks",v.Local.iCnt,"Router",v.Local.sRouter,"Account",v.Local.sAccount)		
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	f.Data.DataTable.AddColumn("Bks","Delete","String","Delete")
+	
+	gui.Settings.gsBankAccounts.AddGridviewFromDatatable("gvBks","Bks")
+	
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","InUse","HeaderHAlignment","center")
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","InUse","Caption","In Use")
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","InUse","AllowEdit",False)
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","InUse","ReadOnly",True)
+	
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","Delete","HeaderHAlignment","center")
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","Delete","Caption","Delete")
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","Delete","AllowEdit",False)
+	gui.Settings.gsBankAccounts.SetColumnProperty("gvBks","Delete","ReadOnly",True)	
+	gui.Settings.gsBankAccounts.ColumnEdit("gvBks","Delete","editorbutton","Delete")		
+	
+	gui.Settings.gsBankAccounts.MainView("gvBks")
+	
+	f.ODBC.Connection!ConC.Close	
+
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6277_Pay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+
+Program.Sub.GetAccount.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$0
+${$6$}$bnguyen$}$20220323160202990$}$tqzwddZCkmoVRWHEL6DZymEEseDhOdzipv0sYTnIWBuGGgmgS6fIkLCjJHXgc7VeIkZKTkY18n8=
+Program.Sub.Comments.End
